@@ -46,6 +46,10 @@ RUN apk --update --no-cache add \
         nano \
     && rm -rf /var/cache/apk/*
 
+
+RUN curl -sL https://deb.nodesource.com/setup_6.x | bash - && \
+  apt-get install -y nodejs
+
 #RUN apk --no-cache add ca-certificates wget
 #RUN wget --quiet --output-document=/etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub
 
