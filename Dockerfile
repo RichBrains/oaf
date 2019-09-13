@@ -68,8 +68,8 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 COPY ./php.ini /etc/php7/conf.d/php.ini
 COPY ./init.sh /
 COPY ./default.conf /etc/nginx/conf.d/default.conf
-RUN chmod +x /init.sh
+#RUN chmod +x /init.sh
 
 EXPOSE 80
 
-ENTRYPOINT [ "/init.sh" ]
+#ENTRYPOINT [ "/init.sh" ]
