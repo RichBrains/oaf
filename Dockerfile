@@ -28,6 +28,7 @@ RUN apk --update --no-cache add \
         php7-tokenizer \
         php7-xdebug \
         php7-xml \
+        php7-xmlwriter \
 #        php7-zip \
 #        php7-zlib \
     && rm -rf /var/cache/apk/*
@@ -37,17 +38,26 @@ RUN apk --update --no-cache add \
         php7-mongodb@testing \
     && rm -rf /var/cache/apk/*
 
-
+# For frontend :
+# - nodejs
+# - nodejs-npm
+# For pdf generator:
+# - wkhtmltopdf
+# - ttf-freefont
 RUN apk --update --no-cache add \
         nginx \
-        git \
+#        git \
         curl \
+        nodejs \
+        nodejs-npm \
+        # for pdf generator
         wkhtmltopdf \
         nano \
+#        openjdk7-jre \
+        # for pdf generator
+        ttf-freefont \
+#        ghostscript \
     && rm -rf /var/cache/apk/*
-
-
-RUN apk add --update nodejs nodejs-npm
 
 #RUN apk --no-cache add ca-certificates wget
 #RUN wget --quiet --output-document=/etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub
