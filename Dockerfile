@@ -1,12 +1,15 @@
 FROM richbrains/symfony
 
-RUN echo "@testing http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories
-RUN apk --update --no-cache add \
-        php7-mongodb@testing \
-    && rm -rf /var/cache/apk/*
-
 RUN apk --update --no-cache add \
         wkhtmltopdf \
         nano \
         ttf-freefont \
     && rm -rf /var/cache/apk/*
+
+RUN apk add --no-cache --virtual .mongodb-ext-build-deps openssl-dev && \
+    pecl install mongodb && \
+    pecl clear-cache && \
+    apk del .mongodb-ext-build-deps
+
+RUN docker-php-ext-enable mongodb.so && \
+    docker-php-source delete
