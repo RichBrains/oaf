@@ -6,7 +6,7 @@ RUN apk --update --no-cache add \
         ttf-freefont \
     && rm -rf /var/cache/apk/*
 
-RUN apk add --no-cache --virtual .mongodb-ext-build-deps autoconf openssl-dev && \
+RUN apk add --no-cache --virtual .mongodb-ext-build-deps autoconf gcc openssl-dev && \
     pecl install mongodb && \
     pecl clear-cache && \
     apk del .mongodb-ext-build-deps
