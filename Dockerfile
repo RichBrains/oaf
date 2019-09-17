@@ -7,9 +7,9 @@ RUN apk --update --no-cache add \
     && rm -rf /var/cache/apk/*
 
 RUN apk add --no-cache --virtual .mongodb-ext-build-deps autoconf gcc g++ make openssl-dev && \
-    pecl install mongodb && \
+    pecl install mongo && \
     pecl clear-cache && \
     apk del .mongodb-ext-build-deps
 
-RUN docker-php-ext-enable mongodb.so && \
+RUN docker-php-ext-enable mongo.so && \
     docker-php-source delete
