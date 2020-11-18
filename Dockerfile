@@ -13,3 +13,5 @@ RUN apk add --no-cache --virtual .mongodb-ext-build-deps autoconf gcc g++ make o
 
 RUN docker-php-ext-enable mongodb.so && \
     docker-php-source delete
+
+COPY log.conf /usr/local/etc/php-fpm.d/log.conf
